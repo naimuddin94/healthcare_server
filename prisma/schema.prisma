@@ -7,8 +7,42 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum UserRole{
+  SUPER_ADMIN
+  ADMIN
+  DOCTOR
+  PATIENT
+}
+
+enum UserStatus{
+  ACTIVE
+  BLOCKED
+}
+
 model User{
   id String @id @default(uuid())
   email String @unique
-  
+  password String
+  role UserRole
+  needPasswordChange Boolean
+  status UserStatus
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+  admin Admin?
+}
+
+model Admin{
+  id String @id @default(uuid())
+  name String
+  email String @unique
+  profilePhoto String?
+  contactNumber String
+  isDeleted Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [email], references: [email])
+  @@map("admins")
 }
