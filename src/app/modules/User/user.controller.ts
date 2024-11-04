@@ -1,10 +1,12 @@
-import { Request, Response } from "express";
+import { AppResponse } from "../../utils";
+import catchAsync from "../../utils/catchAsync";
 import { userServices } from "./user.service";
 
-const crateAdmin = async (req: Request, res: Response) => {
+const crateAdmin = catchAsync(async (req, res) => {
   const result = await userServices.createAdminIntoDB(req.body);
-  res.send(result);
-};
+
+  res.status(201).json(new AppResponse(result, "Admin created successfully"));
+});
 
 export const userController = {
   crateAdmin,
