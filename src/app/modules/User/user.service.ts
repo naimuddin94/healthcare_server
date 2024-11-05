@@ -1,7 +1,6 @@
-import { PrismaClient, UserRole } from "@prisma/client";
+import { UserRole } from "@prisma/client";
+import prisma from "../../helper/prisma";
 import prismaMiddleware from "../../middleware/prismaMiddleware";
-
-const prisma = new PrismaClient();
 prismaMiddleware(prisma);
 
 const createAdminIntoDB = async (data: any) => {
