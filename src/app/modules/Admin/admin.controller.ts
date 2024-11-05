@@ -1,5 +1,6 @@
 import { AppResponse } from "../../utils";
 import catchAsync from "../../utils/catchAsync";
+import { adminFilterableFields, adminOptionFields } from "./admin.constant";
 import { AdminService } from "./admin.service";
 
 const pick = (obj: Record<string, unknown>, keys: string[]) => {
@@ -14,20 +15,16 @@ const pick = (obj: Record<string, unknown>, keys: string[]) => {
 };
 
 const getAllAdmin = catchAsync(async (req, res) => {
-  const filters = pick(req.query, [
-    "name",
-    "email",
-    "contactNumber",
-    "searchTerm",
-  ]);
+  const filters = pick(req.query, adminFilterableFields);
 
-  console.log(filters);
-  const result = await AdminService.fetchAllAdminFromDB(filters);
+  const options = pick(req.query, adminOptionFields);
+
+  const result = await AdminService.fetchAllAdminFromDB(filters, options);
 
   res
     .status(200)
     .json(
-      new AppResponse(201, result, "All Admin data retrieved successfully")
+      new AppResponse(200, result.data, "All Admin data retrieved successfully", result.meta)
     );
 });
 
