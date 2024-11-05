@@ -4,14 +4,14 @@ class AppResponse {
     public status: number,
     public data: any,
     public message: string,
-    public error?: any
+    public meta?: any
   ) {
     this.status = status;
     this.success = status < 400;
     this.data = data;
     this.message = message;
-    if (error) {
-      this.error = error;
+    if (meta) {
+      this.meta = meta;
     }
   }
 }
