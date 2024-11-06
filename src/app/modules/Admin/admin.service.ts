@@ -27,6 +27,7 @@ const fetchAllAdminFromDB = async (
     });
   }
 
+  // Add equality conditions for each filter in filteredValues
   if (Object.keys(filteredValues).length) {
     andCondition.push({
       AND: Object.keys(filteredValues).map((key) => ({
