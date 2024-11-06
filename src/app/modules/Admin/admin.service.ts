@@ -15,6 +15,7 @@ const fetchAllAdminFromDB = async (
 
   const andCondition: Prisma.AdminWhereInput[] = [];
 
+  // Add search condition for searchable fields if a search term is provided
   if (searchTerm) {
     andCondition.push({
       OR: adminSearchableFields.map((field) => ({
