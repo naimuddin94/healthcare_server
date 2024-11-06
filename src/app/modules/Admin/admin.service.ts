@@ -34,6 +34,10 @@ const fetchAllAdminFromDB = async (
     });
   }
 
+  andCondition.push({
+    isDeleted: false,
+  });
+
   const whereCondition: Prisma.AdminWhereInput = { AND: andCondition };
 
   const data = await prisma.admin.findMany({
