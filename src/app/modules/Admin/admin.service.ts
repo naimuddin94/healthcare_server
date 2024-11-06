@@ -42,6 +42,7 @@ const fetchAllAdminFromDB = async (
     isDeleted: false,
   });
 
+  // Combine all AND conditions into a single where condition
   const whereCondition: Prisma.AdminWhereInput = { AND: andCondition };
 
   const data = await prisma.admin.findMany({
