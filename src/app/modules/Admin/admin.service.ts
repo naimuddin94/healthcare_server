@@ -3,6 +3,8 @@ import { pagination, TOptions } from "../../helper/pagination";
 import prisma from "../../helper/prisma";
 import { adminSearchableFields } from "./admin.constant";
 
+
+// Function to fetch all admin data from the database based on query filters and pagination options
 const fetchAllAdminFromDB = async (
   query: Record<string, unknown>,
   options: TOptions
