@@ -19,15 +19,3 @@ class AppResponse {
 }
 
 export default AppResponse;
-
-export const sendResponse = <T>(
-  res: Response,
-  jsonData: {
-    statusCode: number;
-    success: boolean;
-    message: string;
-    data: T | null | undefined;
-    meta?: { page: number; limit: number; total: number };
-  }
-) => {
-};
