@@ -30,9 +30,4 @@ export const sendResponse = <T>(
     meta?: { page: number; limit: number; total: number };
   }
 ) => {
-  return res.status(jsonData.statusCode).json({
-    success: jsonData.success,
-    message: jsonData.message,
-    data: jsonData.data,
-  });
 };
