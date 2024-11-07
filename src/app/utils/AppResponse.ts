@@ -34,6 +34,5 @@ export const sendResponse = <T>(
     success: jsonData.success,
     message: jsonData.message,
     data: jsonData.data,
-    meta: jsonData.meta,
   });
 };
