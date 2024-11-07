@@ -1,3 +1,5 @@
+import { Response } from "express";
+
 class AppResponse {
   public success: boolean;
   constructor(
@@ -17,3 +19,21 @@ class AppResponse {
 }
 
 export default AppResponse;
+
+export const sendResponse = <T>(
+  res: Response,
+  jsonData: {
+    statusCode: number;
+    success: boolean;
+    message: string;
+    data: T | null | undefined;
+    meta?: { page: number; limit: number; total: number };
+  }
+) => {
+  return res.status(jsonData.statusCode).json({
+    success: jsonData.success,
+    message: jsonData.message,
+    data: jsonData.data,
+    meta: jsonData.meta,
+  });
+};
