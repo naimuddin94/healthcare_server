@@ -1,18 +1,8 @@
-import { AppResponse } from "../../utils";
+import { AppResponse, pick } from "../../utils";
 import catchAsync from "../../utils/catchAsync";
 import { adminFilterableFields, adminOptionFields } from "./admin.constant";
 import { AdminService } from "./admin.service";
 
-const pick = (obj: Record<string, unknown>, keys: string[]) => {
-  const finalObj: Partial<typeof obj> = {};
-  for (const key of keys) {
-    if (obj && Object.hasOwnProperty.call(obj, key)) {
-      finalObj[key] = obj[key];
-    }
-  }
-
-  return finalObj;
-};
 
 const getAllAdmin = catchAsync(async (req, res) => {
   const filters = pick(req.query, adminFilterableFields);
