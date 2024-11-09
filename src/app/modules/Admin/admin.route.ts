@@ -5,4 +5,4 @@ const router = express.Router();
 
 router.route("/").get(AdminController.getAllAdmin);
 
-export const adminRoutes = router;
+export const AdminRoutes = router;
