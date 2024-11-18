@@ -28,15 +28,15 @@ const createDoctorIntoDB = async (data: any) => {
     role: UserRole.DOCTOR,
   };
 
-  return await prisma.$transaction(async (tx) => {
-    await tx.user.create({
-      data: userData,
-    });
+  // return await prisma.$transaction(async (tx) => {
+  //   await tx.user.create({
+  //     data: userData,
+  //   });
 
-    return await tx.admin.create({
-      data: data.doctor,
-    });
-  });
+  //   return await tx.admin.create({
+  //     data: data.doctor,
+  //   });
+  // });
 };
 
 export const userServices = {
