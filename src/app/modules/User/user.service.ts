@@ -21,6 +21,25 @@ const createAdminIntoDB = async (data: any) => {
   });
 };
 
+const createDoctorIntoDB = async (data: any) => {
+  const userData = {
+    email: data.doctor.email,
+    password: data.password,
+    role: UserRole.DOCTOR,
+  };
+
+  return await prisma.$transaction(async (tx) => {
+    await tx.user.create({
+      data: userData,
+    });
+
+    return await tx.admin.create({
+      data: data.doctor,
+    });
+  });
+};
+
 export const userServices = {
   createAdminIntoDB,
+  createDoctorIntoDB
 };
