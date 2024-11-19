@@ -31,6 +31,7 @@ model User{
 
   @@map("users")
   admin Admin?
+  doctor Doctor?
 }
 
 model Admin{
@@ -45,4 +46,18 @@ model Admin{
 
   user User @relation(fields: [email], references: [email])
   @@map("admins")
+}
+
+model Doctor{
+  id String @id @default(uuid())
+  name String
+  email String @unique
+  profilePhoto String?
+  contactNumber String
+  isDeleted Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [email], references: [email])
+  @@map("doctors")
 }
