@@ -7,6 +7,11 @@ const saveDoctorIntoDB = async (payload: Doctor) => {
   });
 };
 
+const fetchAllDoctors = async () => {
+  return await prisma.doctor.findMany();
+};
+
 export const DoctorService = {
   saveDoctorIntoDB,
+  fetchAllDoctors,
 };
