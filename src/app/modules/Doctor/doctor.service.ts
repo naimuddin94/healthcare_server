@@ -11,7 +11,7 @@ const fetchAllDoctorsFromDB = async () => {
   return await prisma.doctor.findMany();
 };
 
-const fetchAllDoctorFromDB = async (id: string) => {
+const fetchDoctorFromDB = async (id: string) => {
   return await prisma.doctor.findFirst({
     where: {
       id,
@@ -22,5 +22,5 @@ const fetchAllDoctorFromDB = async (id: string) => {
 export const DoctorService = {
   saveDoctorIntoDB,
   fetchAllDoctorsFromDB,
-  fetchAllDoctorFromDB,
+  fetchDoctorFromDB,
 };
