@@ -16,18 +16,26 @@ const createDoctor = catchAsync(async (req, res) => {
 const getAllDoctors = catchAsync(async (req, res) => {
   const result = await DoctorService.fetchAllDoctorsFromDB();
 
-    res
-      .status(httpStatus.OK)
-      .json(
-        new AppResponse(
-          httpStatus.OK,
-          result,
-          "Doctors retrieved successfully"
-        )
-      );
+  res
+    .status(httpStatus.OK)
+    .json(
+      new AppResponse(httpStatus.OK, result, "Doctors retrieved successfully")
+    );
+});
+
+const getDoctor = catchAsync(async (req, res) => {
+  const doctorId = req.params.doctorId;
+  const result = await DoctorService.fetchDoctorFromDB(doctorId);
+
+  res
+    .status(httpStatus.OK)
+    .json(
+      new AppResponse(httpStatus.OK, result, "Doctor retrieved successfully")
+    );
 });
 
 export const DoctorController = {
   createDoctor,
   getAllDoctors,
+  getDoctor,
 };
