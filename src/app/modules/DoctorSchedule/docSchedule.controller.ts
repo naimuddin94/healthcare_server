@@ -17,6 +17,22 @@ const createDocSchedule = catchAsync(async (req, res) => {
     );
 });
 
+const getAllMySchedules = catchAsync(async (req, res) => {
+  const user = req.user;
+  const result = await DoctorScheduleService.fetchAllMySchedules(user.id);
+
+  res
+    .status(httpStatus.OK)
+    .json(
+      new AppResponse(
+        httpStatus.OK,
+        result,
+        "Doctor schedules fetched successfully"
+      )
+    );
+});
+
 export const DoctorScheduleController = {
   createDocSchedule,
+  getAllMySchedules,
 };
