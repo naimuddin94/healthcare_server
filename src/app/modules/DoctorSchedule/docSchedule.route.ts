@@ -8,4 +8,6 @@ router
   .post(DoctorScheduleController.createDocSchedule)
   .get(DoctorScheduleController.getAllMySchedules);
 
+router.route("/:scheduleId").get(DoctorScheduleController.getSchedule);
+
 export const DocScheduleRoutes = router;
