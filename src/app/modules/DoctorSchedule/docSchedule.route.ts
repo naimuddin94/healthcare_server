@@ -3,6 +3,9 @@ import { DoctorScheduleController } from "./docSchedule.controller";
 
 const router = express.Router();
 
-router.post("/", DoctorScheduleController.createDocSchedule);
+router
+  .route("/")
+  .post(DoctorScheduleController.createDocSchedule)
+  .get(DoctorScheduleController.getAllMySchedules);
 
 export const DocScheduleRoutes = router;
