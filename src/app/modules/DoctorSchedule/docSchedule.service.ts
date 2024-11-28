@@ -16,7 +16,18 @@ const fetchAllMySchedules = async (doctorId: string) => {
   return result;
 };
 
+const fetchScheduleFromDB = async (scheduleId: string) => {
+  const result = await prisma.doctorSchedules.findMany({
+    where: {
+      scheduleId,
+    },
+  });
+
+  return result;
+};
+
 export const DoctorScheduleService = {
   saveIntoDB,
   fetchAllMySchedules,
+  fetchScheduleFromDB,
 };
