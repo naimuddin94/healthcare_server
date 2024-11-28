@@ -32,7 +32,23 @@ const getAllMySchedules = catchAsync(async (req, res) => {
     );
 });
 
+const getSchedule = catchAsync(async (req, res) => {
+  const scheduleId = req.params.scheduleId;
+  const result = await DoctorScheduleService.fetchAllMySchedules(scheduleId);
+
+  res
+    .status(httpStatus.OK)
+    .json(
+      new AppResponse(
+        httpStatus.OK,
+        result,
+        "Schedule fetched successfully"
+      )
+    );
+});
+
 export const DoctorScheduleController = {
   createDocSchedule,
   getAllMySchedules,
+  getSchedule,
 };
