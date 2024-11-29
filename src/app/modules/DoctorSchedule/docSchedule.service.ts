@@ -44,12 +44,24 @@ const updateScheduleInDB = async (doctorId: string, payload: any) => {
   return result;
 };
 
+// Delete a specific schedule
+const deleteScheduleFromDB = async (payload: any) => {
+  const result = await prisma.doctorSchedules.delete({
+    where: {
+      doctorId_scheduleId: {
+        doctorId: payload.doctorId,
+        scheduleId: payload.scheduleId,
+      },
+    },
+  });
 
+  return result;
+};
 
 export const DoctorScheduleService = {
   saveIntoDB,
   fetchAllMySchedules,
   fetchScheduleFromDB,
   updateScheduleInDB,
-
+  deleteScheduleFromDB,
 };
