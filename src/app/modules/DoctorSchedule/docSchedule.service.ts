@@ -26,8 +26,24 @@ const fetchScheduleFromDB = async (scheduleId: string) => {
   return result;
 };
 
+// Update a specific schedule
+const updateScheduleInDB = async (doctorId: string, payload: any) => {
+  const result = await prisma.doctorSchedules.update({
+    where: {
+      doctorId_scheduleId: {
+        doctorId,
+        scheduleId: payload.scheduleId,
+      },
+    },
+    data: payload,
+  });
+
+  return result;
+};
+
 export const DoctorScheduleService = {
   saveIntoDB,
   fetchAllMySchedules,
   fetchScheduleFromDB,
+  updateScheduleInDB,
 };
