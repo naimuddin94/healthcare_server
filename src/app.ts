@@ -1,3 +1,12 @@
+/*
+ * Title: Healthcare Server
+ * Description: A backend application for healthcare
+ * Author: Md Naim Uddin
+ * Github: naimuddin94
+ * Date: 03/06/2025
+ *
+ */
+
 import cors from "cors";
 import express, { Application, NextFunction, Request, Response } from "express";
 import routes from "./app/routes";
